@@ -4,14 +4,31 @@ using namespace std;
 
 int main(){
     int input;
-    int arr[input][2];
     cin>>input;
-    for (int i = 0; i<input; ++i){
-            cin>>arr[i][0];
-            cin>>arr[i][1];
+    int counter = 0;
+    while( counter < input){
+        counter += 1;
+        int n;
+        int x;
+        int y;
+        cin>>n;
+        cin>>x;
+        cin>>y;
+        int arr[n];
+        for( int i = 0; i < n; ++i){
+            cin>>arr[i];
         }
-    for (int i = 0; i<input; ++i){
-            cout<<arr[i][0]+arr[i][1]<<endl;
+        if (arr[0] == x && arr[n-1] == y){
+            cout<<"BOTH"<<endl;
         }
-    
+        else if (arr[0] == x && arr[n-1] != y){
+            cout<<"EASY"<<endl;
+        }
+        else if (arr[0] != x && arr[n-1] == y){
+            cout<<"HARD"<<endl;
+        }
+        else if(arr[0] != x && arr[n-1] != y){
+            cout<<"OKAY"<<endl;
+        }
     }
+}
