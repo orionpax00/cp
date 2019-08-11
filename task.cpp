@@ -1,46 +1,54 @@
 #include <iostream>
-#include <algorithm>
-#include <cstdlib>
-#include <cmath>
 #include <vector>
-#include <string>
+#include <set>
+
 using namespace std;
 
-int main()
-{
-    ios_base::sync_with_stdio(0) ;
-    int t , n , x = 0 ;
-    bool b = 0 ;
-    cin >> t ;
-    vector<string> vect ;
-    while(t--)
-    {
-        cin >> n ;
-        vect.resize(n) ;
-        for(int i=0;i<n;i++)
-        {
-            cin >> vect[i] ;
-            if(vect[i][0]>='a')
-            {
-                b = 1 ;
-                x = i ;
+int main() {
+    int num_test_case;
+    cin>>num_test_case;
+    int counter = 0;
+    while(counter < num_test_case){
+        ++counter;
+        int n;
+        int m;
+        cin>>n;
+        cin>>m;
+        int arr[n+2][m+2];
+
+        for(int i = 1; i < n+1 ; ++i){
+            for(int j = 1; j < m+1; j++ ){
+                cin>>arr[i][j];
             }
         }
-        if(b)
-        {
-            for(int i=x+1;i<n;i++)
-                cout << vect[i] << " " ;
-            cout << vect[x] << " " ;
-            for(int i=0;i<x;i++)
-                cout << vect[i] << " " ;
-            cout << endl ;
-        }else
-        {
-            for(int i=0;i<n;i++)
-                cout << vect[i] << " " ;
-            cout << endl ;
+
+        for(int i = 0; i < n+2 ; ++i){
+            if( i == 0 || i == n+1){
+                for(int j = 1; j < m+2; j++ ){
+                    arr[i][j] = 0;
+                }
+            }
+
+            else{
+                arr[i][0] = 0;
+                arr[i][m+1] = 0;
+            }
         }
-        b = 0 ;
-    }
+
+        set< int > university;
+        for(int i = 1; i < n+1 ; ++i){
+            for(int j = 1; j < m+1; j++ ){
+                    if(arr[i][j] != -1){
+                        if( arr[i][j] == arr[i-1][j-1] || arr[i][j] == arr[i-1][j] || arr[i][j] == arr[i-1][j+1] || arr[i][j] == arr[i][j-1] || arr[i][j] == arr[i][j+1] || arr[i][j] == arr[i+1][j-1] || arr[i][j] == arr[i+1][j] || arr[i][j] == arr[i+1][j+1] ){
+                            university.insert(arr[i][j]);
+                        }
+                    }
+                }
+            }
+        
+        cout << university.size() << endl;
+
+        }
+
     return 0;
 }
