@@ -1,15 +1,22 @@
 #include <iostream>
-#include <algorithm>
+#include <string>
+#include <cctype>
 
 using namespace std;
 
 int main()
 {
-    int num_test_case;
-    cin>>num_test_case;
-    int counter = 0;
-    while(counter < num_test_case){
-        counter++;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    string s1, s2;
+    cin>>s1>>s2;
+
+
+
+    while(t--){
+
     }
+
     return 0;
 }
