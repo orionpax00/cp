@@ -7,7 +7,7 @@ int main()
 {
     int num_test_case;
     cin>>num_test_case;
-    int counter;
+    int counter = 0;
     while(counter < num_test_case){
         counter++;
     }
