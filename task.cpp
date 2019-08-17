@@ -23,8 +23,19 @@ int main()
     // freopen("input.txt", "r", stdin);
 	// freopen("output.txt", "w", stdout);
 
-    int n,m,a;
-    cin>>n>>m>>a;
+    int n,m,k;
+    cin>>n>>m>>k;
+
+    vector < int > v; 
+    rep(i,0,n){
+        rep(j,0,m){
+            v.pb((i + 1) * (j+1));
+        }
+    }
+
+    sort(v.begin(), v.end());
+
+    cout<<v[k-1]<<"\n";
 
     return 0;
 }

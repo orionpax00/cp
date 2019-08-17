@@ -12,7 +12,7 @@ using namespace std;
 #define replli(i,o,n) for(long long int i = o; i < n; i++)
 #define trav(x,a) for(auto &x : a)
 #define lli long long int
-#define m 1000000007
+#define M 1000000007
 #define pb push_back
 
 int main()
