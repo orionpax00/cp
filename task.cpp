@@ -3,7 +3,6 @@
 */
 
 #include <bits/stdc++.h>
-#include <algorithm>  
 
 using namespace std;
 
@@ -23,19 +22,25 @@ int main()
     // freopen("input.txt", "r", stdin);
 	// freopen("output.txt", "w", stdout);
 
-    int n,m,k;
-    cin>>n>>m>>k;
+    string s ;
+    cin>>s;
 
-    vector < int > v; 
+    int t;
+    cin >> t;
+    int n = s.length();
+
+    int arr[100001];
+
     rep(i,0,n){
-        rep(j,0,m){
-            v.pb((i + 1) * (j+1));
-        }
+        if(s[i] == s[i+1]) arr[i+1] = arr[i] + 1;
+        else arr[i+1] = arr[i];
     }
-
-    sort(v.begin(), v.end());
-
-    cout<<v[k-1]<<"\n";
+    
+    while(t--){
+        int l,r;
+        cin>>l>>r;
+        cout<<arr[r-1] - arr[l-1]<<endl;       
+    }
 
     return 0;
 }
