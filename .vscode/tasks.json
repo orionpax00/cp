@@ -9,12 +9,14 @@
                 "-g",
                 "${file}",
                 "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "&&",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
-        },
+        }
     ]
 }
