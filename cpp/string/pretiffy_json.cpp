@@ -62,47 +62,26 @@ int main()
     // auto start = chrono::high_resolution_clock::now();
     // auto stop = chrono::high_resolution_clock::now();
     
-    map<char , int> value;
-    value['I']= 1;
-    value['V']= 5;
-    value['X']= 10;
-    value['L']= 50;
-    value['C']= 100;
-    value['D']= 500;
-    value['M']= 1000;
+    // string A = "{A:'B',C:{D:'E',F:{G:'H',I:'J'}}}";
+    string A = "['foo', {'bar':['baz',null,1.0,2]}]";
     
-    map<char, char> prevalue;
-    prevalue['V'] = 'I';
-    prevalue['X'] = 'I';
-    prevalue['L'] = 'X';
-    prevalue['C'] = 'X';
-    prevalue['D'] = 'C';
-    prevalue['M'] = 'C';
     // getline(cin, A);
-
-    string roman = "MDCCCIV";
-    int sum = 0;
-    // cout<<roman.length() - 1;
-
-    for (int i = roman.length() - 1; i >= 0; i--){
-        char roman_i = roman[i];
-        cout<<i<<endl;
-
-        sum += value[roman_i];
-        cout<<value[roman_i]<<endl;
-        cout<<sum<<endl;
-        
-
-        if(i){
-            if(roman[i-1] == prevalue[roman_i]) {
-                cout<<"---------"<<endl;
-                cout<<value[roman[i-1]]<<endl;
-                sum -= value[roman[i-1]];i++;
-            }
-        }
+    vector ans;
+    bool first = true;
+    int counter = 0;
+    string B = "";
+    for(auto x : A){
+            
+            if(x == ','){B += ",\n"; for(int i=0; i<counter;i++){B+="\t";}; ans.push_back(B)}
+            else if(x == '{'){ B += "\n";for(int i=0; i<counter;i++){B+="\t";}; B+="{\n"; for(int i=0; i<=counter;i++){B+="\t";}; counter++;}
+            else if(x == '}'){counter--; B+="\n"; for(int i=0; i<counter;i++){B+="\t";}; B += "}\n";}
+            else if(x == '['){ B += "\n";for(int i=0; i<counter;i++){B+="\t";}; B+="[\n"; for(int i=0; i<=counter;i++){B+="\t";}; counter++;}
+            else if(x == ']'){counter--; B+="\n"; for(int i=0; i<counter;i++){B+="\t";}; B += "]\n";}
+            else{B+=x;}
     }
-  
-    cout<<sum;
+
+    cout<<B.substr(1, B.length() - 2);
+    
     
     return 0;
 }
