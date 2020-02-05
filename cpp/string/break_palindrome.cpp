@@ -1,3 +1,12 @@
+/*
+  Title: Break the palindrome
+  Descripttion: You are given a palindrome change only one character from string to break its
+                palindromic nature, contraint answer should we lexographically smaller among all
+                possible answers
+  Tags: Palindrome, string
+*/
+
+
 #include <bits/stdc++.h>
 
 using namespace std;
