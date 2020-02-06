@@ -38,7 +38,10 @@
         "chrono": "cpp",
         "string": "cpp",
         "random": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "bitset": "cpp",
+        "functional": "cpp",
+        "future": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

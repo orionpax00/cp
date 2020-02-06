@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<expr>
+<sum>
+<elem>4</elem>
+<elem>6</elem>
+<elem>7</elem>
+<elem>3</elem>
+</sum>
+</expr>
