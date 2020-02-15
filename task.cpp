@@ -1,26 +1,36 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-vector<int> findfactors(int n){
-	vector<int> factors;
-	for(int i=1;i<sqrt(n);i++){
-		if(n%i==0){
-			if(n/i==i) factors.push_back(i);
-			else {factors.push_back(i);factors.push_back(n/i);}
-		}
-	}
-	return factors;
-}			
-
-int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int x=17;
-	int ans = 8*sizeof(int) - __builtin_clz(x);
-	cout<<pow(2,ans);
-	
-	return 0;
-}
+    #include <bits/stdc++.h>
+     
+    using namespace std;
+     
+    void solution(vector<int> s,int n){
+    	int ans = 0;
+    	vector<int> arr2(n+1,0);
+    	for (int i = 0; i < n-1; i++)
+    	{
+    		if(arr2[s[i]]) continue;
+    		else{
+    			arr2[s[i]]=1;
+    			vector<int> arr(n+1,0);
+    			for (int j = i+1; j < n; j++)
+    			{
+    				if(arr[s[j]]) continue;
+    				else {arr[s[j]]=1; ans++;}
+    			}		
+    		}
+    	}
+    	cout<<ans;	
+    }
+     
+    int main(){
+    	ios_base::sync_with_stdio(false);
+    	cin.tie(NULL);
+    	cout.tie(NULL);
+    	int n;cin>>n;
+    	vector<int> v(n);
+    	for (size_t i = 0; i < n; i++)
+    	{
+    		cin>>v[i];
+    	}
+    	solution(v,n);
+    	return 0;
+    }
