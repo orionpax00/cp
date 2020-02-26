@@ -7,14 +7,7 @@ int main(){
   cout.tie(NULL);
   freopen("input.txt", "r", stdin);
   freopen("output.txt", "w", stdout);
-  
+ 
   return 0;
 }
 
-
- 1 1 1
-
- 3->1 == 3*2
- 3->2 == 3(1) +1
-
-_ _ _ _ _ _ _ 
