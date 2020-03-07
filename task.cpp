@@ -1,15 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-static bool iskill = false;
+vector<int> v(10, 0);
+bool check(int n){
+    while (n){
+    int t1= n%10;
+    if(v[t1]) return false;
+    n /= 10;
+  }
+  return true;
 
-// void myfunc(){
-//   if(iskill == true){
-//     cout<<"im killing";
-//   }else{
-//     cout<<"im not killing";
-//   }
-// }
+}
 
 int main(){
   ios_base::sync_with_stdio(false);
@@ -17,19 +18,20 @@ int main(){
   cout.tie(NULL);
   // freopen("input.txt", "r", stdin);
   // freopen("output.txt", "w", stdout);
- 
-  int i;
-  for(i=100;i>=0;i){
-    cout<<i<<"\n";
+  int n,k;
+  cin>>n>>k;
+  
+  while(k--){
+    int temp;
+    cin>>temp;
+    v[temp] = 1;
   }
+
+  for(int k = n ; k<1e10; k++){
+    if(check(k)) {cout<<k; break;}
+  }
+
+
 
   return 0;
 }
-
-
-//  1 1 1
-
-//  3->1 == 3*2
-//  3->2 == 3(1) +1
-
-// _ _ _ _ _ _ _ 
