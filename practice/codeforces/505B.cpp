@@ -1,10 +1,3 @@
-/*
-*   Author - Durgesh(orionpax00)
-    Some legends are told
-        Some turn to dust or to gold
-            But you will remember me
-                Remember me for centuries...
-*/
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
 
