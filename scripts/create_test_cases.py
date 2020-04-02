@@ -8,7 +8,7 @@ for i in range(1,2501,1):
 
 print(len(testcase))
 
-with open('./input.txt', 'w') as inputfile:
+with open('../input.txt', 'w') as inputfile:
   inputfile.write("1\n")
   inputfile.write(" ".join(testcase))
 

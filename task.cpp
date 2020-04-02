@@ -1,7 +1,6 @@
-// 
-// string 
+//	some propblem
+//	brute-force datastructures
 #include <bits/stdc++.h>
-
 using namespace std;
 
 int main(){
@@ -10,37 +9,13 @@ int main(){
   cout.tie(NULL);
   freopen("input.txt", "r", stdin);
   freopen("output.txt", "w", stdout);
-
-  int t; string st;
-  cin>>t>>st;
-
-  char s[t];
-  strcpy(s, st.c_str());
-
-  bool run_ = true;
-  int sum=0;
-  while(run_){
-    
-    char ml = 'a';
-    int pos=0;
-    for(int i =0; i<t; i++){
-      if((char) s[i] > ml) {
-        ml = (char) s[i];
-        pos = i;
-      }
-    }
-    if(pos>=1 && pos <t-1){
-      if((s[pos-1] - s[pos] == -1) || (s[pos+1] - s[pos] == 1)){
-        for(int i=pos; i<t-1; i++){
-          s[i] = s[i+1];
-        }
-        sum++;t--;
-      }
-    }else{
-      run_ = false;
-    }
+  int a; cin>>a;
+  cout<<a;
+  int ans=0;
+  for(int i=0; i<1000000; i++){
+    for(int j=0; j<1000; j++){
+    ans = j;
   }
-  cout<<sum;
+  }
   return 0;
 }
-
