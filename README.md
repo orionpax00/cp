@@ -4,3 +4,9 @@
 
 
 
+## Resources
+  * STL
+
+
+### STL
+* [105 STL Algorithms in Less Than an Hour](https://youtube.com)

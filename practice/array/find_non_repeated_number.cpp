@@ -1,3 +1,5 @@
+//	Every elemnt apperat twice except onece find that
+//	array XOR
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -8,7 +10,11 @@ int main(){
   cout.tie(NULL);
   freopen("input.txt", "r", stdin);
   freopen("output.txt", "w", stdout);
-  
-  return 0;
-}
+  int x, sum=0;
+  while(cin>>x){
+    sum ^= x;
+  }
+  cout<<sum;
 
+  return 0;
+} 
