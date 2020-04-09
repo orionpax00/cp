@@ -1,6 +1,8 @@
 # Top Use Case Stl Algorithms
 Link of video discription: [105 STL Algorithms in less Than an Hour]()
 
+For more comprihensive guide visit cpluspluc.com/algorithms
+
 ### Heap
 * Heapify an array, cpp make_heap() function create an array representation of max heap. Stl also provide way to add and delete in to the heap.
   ```c
