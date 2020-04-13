@@ -11,3 +11,118 @@ Nothing is in the order 😉
     > Team work, Approch to the problem, etc
 
     I did various projects, which are mainly centered around web development and machine learning combine, but the project that I want to share is a collaborated applied research project of BioTech Department IIT Roorkee and AIIMS Delhi under a professor and a research Scholar, The project was to developed a some piece of software to analyse and determine Human Heart state.Previously they have a android mobile app that uses weight, heart rate, and blood pressure as sequencial data to determine that heart state, and the professor want some mote automation and intellegince in the app and want to make it cross platform. So, After joining, first thing that I did in that project was the migration of codebase from android to react-native to make it cross platform. while I was developing that Application I used to read research article related to the ECG and Deep learning and what is the status of ECG research. After discussing with the Ph.D student and professor I proposed a method that integrate heart beat tagging using paper ECG records and an input. Which was done in series as the task was very tedious because of the variablity in ECG record layout, noisy and overlaping Heart Beats. Variable of Record was tackled by choosing three widely used format(suggested by AIIMS cardiology department) and identifing it via Simple Image classifier which was trained on three class images manually collected from the internet. After layout identification, heart-beats are segmented using the strategy of object detection and QRS interval determination, after that segmented beats are passed onto the final beats tagger which is a attention based multi input convolutional neural network trained over 14 different heart beat states. we are corrently budling up the thing to make it accesable via mobile app and also create a React Web app for bulk image tagging.
+
+3. **Tell me about how your previous rounds went**
+    > wants to ask where to performed well are where worst
+
+4. **Time Complexity Analysis Question**
+    > A piece of code is given determine it time and space complexity.
+
+5.  **ACID property of DBMS**
+
+6.  **SQL Queries mainly join and nested**
+
+7.  **How the C Program runs**
+
+8.  **I/O operations in C/C++**
+
+9.  **What are System Calls**
+
+10. **What is Storage Class**
+
+11. **What are General Purpose Registers**
+
+12. **What is Linker**
+
+13. **what is loader**
+
+14. **What is IPC(Inter Process communication) and pipes**
+
+15. **What is the difference between c and c++**
+
+16. **List and Explain some OOPs Concept and explain their requirement and importance**
+    *   **What is inheritance**
+    *   **What is class**
+    *   **What is object**
+    *   **What is Abstraction**
+    *   **What is Encapsulation**
+    *   **What is Polymorphism**
+    *   **What is Overloading**
+    *   **Explain Exception Handling**
+
+17. **What are Virtual functions and virtual classes?and why they are used**
+    *   **How inheritence affected by the virtual and pure virtual function**
+
+18. **What is normalization in DBMS**
+    *   **4 different methods of normalization**
+    *   **Give example table for every method**
+
+19. **Name mangling and extern**
+
+20. **What are Smart Pointers**
+
+21. **What are constructors and destructors**
+
+22. **What are namespaces and their use**
+
+23. **Static keyword in C++? Does it exist in C?**
+
+24. **free in C and what is its use**
+
+25. **Compile time polymorphism and run time polymorphism**
+
+26. **Data Structure Implementation for particular type of problem**
+    *   **To store browser History**
+    *   **To store student info like id, grade, etc**
+    *   **Recyling bin implementation**
+    
+27. **What is error 404, 401, 502, etc**
+
+28. **How http, DNS, https works?**
+
+29. **Web page Network Diagnosis and Profiling**
+
+30. **RSA encryption algorithm**
+
+31. **Difference between static and global variable**
+
+32. **Adavantages of linux over windows and why developers prefer that?**
+
+33. **Static vs Dynamic linking**
+
+34. **What happened when you type google.com**
+
+35. **How message send in each layer from your PC to the router and so on till the message reaches to the servers of google.**
+
+36. **Protocols? ARP, RARP, BOOTP, DHCP, etc ?compare UDP and TCP?**
+
+37. **Orpan vs Zombie process**
+
+38. **Difference between thread and Process**
+
+39. **What is routing in computer networks**
+
+40. **Types of Memory Available**
+    There are four types of memory available:
+    *   Computer Registers (ICs)
+    *   Cache Memory(ICs)
+    *   Main Memory(RAM)
+    *   Secondary Memory(Hard Drive, Solid State Drive)
+
+41. **Explain CPU Scheduling**
+
+42. **Explain Deadlock**
+
+43. **Paging and segmentation**
+
+44. **What is SuperNetting and SubNetting**
+
+45. **Fragmentation in IP packets**
+
+46. **Explain TTL**
+
+47. **Difference between IPv4 and IPv6**
+
+48. **Difference between SQL and noSQL database with example**
+
+49. **Ternary Search is Inefficient than Binary Search. Why??**
