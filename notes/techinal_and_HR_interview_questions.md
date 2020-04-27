@@ -126,3 +126,26 @@ Nothing is in the order 😉
 48. **Difference between SQL and noSQL database with example**
 
 49. **Ternary Search is Inefficient than Binary Search. Why??**
+50. **What are B and B++ Tree and there significance in databases**
+    * **Disk Structure**
+        <center>
+
+        ![img](assets/img/hdd_sector_block_dia.jpg)
+
+        </center>
+
+        * Any location on the disk can be accesside using track Number --> Sector Number --> Block Number.
+        * Offset is also required in addition to the above numbers to get exact data.
+    * **Usefulness of indexing and multi-indexing**
+        <center>
+
+        ![img](assets/img/multi-indexing.png)
+        
+        </center>
+    * **m-way Trees**
+    * **Condition Imposed on m-way trees to make them B Trees**
+    * **Condtion Imposed on B trees to make them B+ Trees**
+
+51. **Continuous Integration(CI) in CPP**
+    CI is automatic building of project and running of the test cases in either on your local machine or any cloud machine so that every time code repository gets new commit it re-run that whole pipeline imediately.
+    Using ***Jenkins***: Create Jenkinsfile, Write command to build project, Run test cases and setup Jenkins server.

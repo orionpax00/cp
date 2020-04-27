@@ -13,13 +13,12 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int durgesh = 00;
-    // freopen("input.txt", "r", stdin);
-	// freopen("output.txt", "w", stdout);
 
-    string s ;
-    cin>>s;
-    cout<<s;
+    #ifdef LOCAL
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    
 
     return 0;
 }

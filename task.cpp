@@ -6,27 +6,37 @@ int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
   cout.tie(NULL);
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
-
-  int n, w;cin >> n >> w;
-  int arr[n+1][2];
-
-  for(int i =0 ; i< n ; i++){
-    cin>>arr[i+1][0] >> arr[i+1][1]; 
-  }
-  vector<vector<long long>> dp(n+1, vector<long long>(w+1,0));
-
-  for(int i=1; i<n+1;i++){
-    for(int j=1;j<w+1; j++){
-      if(j-arr[i][0]>=0){
-        dp[i][j] = max(dp[i-1][j], dp[i-1][j-arr[i][0]] + arr[i][1]);
-      } 
-      else
-        dp[i][j] = dp[i-1][j]; 
+  #ifdef LOCAL
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+  #endif
+  string s; cin>>s;
+  int n = s.length();
+  char tobeput[3] = {'a','b','c'};
+  int k = 0;
+  if(s.length() == 2){
+    s[1] = tobeput[0];
+    while(s[1] == s[0]){
+      s[1] = tobeput[k+1]; k++;
     }
   }
-  cout<<dp[n][w];
+  for(int i = 1; i< n-1; i++){
+    k = 0;
+    if(s[i-1] == s[i]){
+      s[i] = tobeput[0];
+      while(s[i+1] == s[i] || s[i-1] == s[i]){
+        s[i] = tobeput[k+1]; k++;
+      }
+    }
+  }
+  
+  k = 0;
+  if(s[n-2] == s[n-1]){
+    s[n-1] = tobeput[0];
+    while(s[n-1] == s[n-2]){
+      s[n-1] = tobeput[k+1]; k++;
+    }
+  }
+  cout<<s;
   return 0;
 }
-
