@@ -1,6 +1,109 @@
+// test tourist graph templates
+
 #include <bits/stdc++.h>
 
 using namespace std;
+
+class dsu {
+  public:
+  vector<int> p;
+  int n;
+
+  dsu(int _n) : n(_n) {
+    p.resize(n);
+    iota(p.begin(), p.end(), 0);
+  }
+
+  inline int get(int x) {
+    return (x == p[x] ? x : (p[x] = get(p[x])));
+  }
+
+  inline bool unite(int x, int y) {
+    x = get(x);
+    y = get(y);
+    if (x != y) {
+      p[x] = y;
+      return true;
+    }
+    return false;
+  }
+};
+
+template <typename T>
+class graph {
+  public:
+  struct edge {
+    int from;
+    int to;
+    T cost;
+  };
+
+  vector<edge> edges;
+  vector< vector<int> > g;
+  int n;
+
+  function<bool(int)> ignore;
+
+  graph(int _n) : n(_n) {
+    g.resize(n);
+    ignore = nullptr;
+  }
+
+  virtual int add(int from, int to, T cost) = 0;
+
+  virtual void set_ignore_edge_rule(const function<bool(int)> &f) {
+    ignore = f;
+  }
+
+  virtual void reset_ignore_edge_rule() {
+    ignore = nullptr;
+  }
+};
+
+template <typename T>
+class undigraph : public graph<T> {
+  public:
+  using graph<T>::edges;
+  using graph<T>::g;
+  using graph<T>::n;
+
+  undigraph(int _n) : graph<T>(_n) {
+  }
+
+  int add(int from, int to, T cost = 1) {
+    assert(0 <= from && from < n && 0 <= to && to < n);
+    int id = (int) edges.size();
+    g[from].push_back(id);
+    g[to].push_back(id);
+    edges.push_back({from, to, cost});
+    return id;
+  }
+};
+
+template <typename T>
+vector<int> find_mst(const undigraph<T> &g, T &ans) {
+  vector<int> order(g.edges.size());
+  iota(order.begin(), order.end(), 0);
+  sort(order.begin(), order.end(), [&g](int a, int b) {
+    return g.edges[a].cost < g.edges[b].cost;
+  });
+  dsu d(g.n);
+  vector<int> ans_list;
+  ans = 0;
+  for (int id : order) {
+    if (g.ignore != nullptr && g.ignore(id)) {
+      continue;
+    }
+    auto &e = g.edges[id];
+    if (d.get(e.from) != d.get(e.to)) {
+      d.unite(e.from, e.to);
+      ans_list.push_back(id);
+      ans += e.cost;
+    }
+  }
+  return ans_list;
+  // returns edge ids of minimum "spanning" forest
+}
 
 int main(){
   ios_base::sync_with_stdio(false);
@@ -10,33 +113,19 @@ int main(){
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
   #endif
-  string s; cin>>s;
-  int n = s.length();
-  char tobeput[3] = {'a','b','c'};
-  int k = 0;
-  if(s.length() == 2){
-    s[1] = tobeput[0];
-    while(s[1] == s[0]){
-      s[1] = tobeput[k+1]; k++;
-    }
-  }
-  for(int i = 1; i< n-1; i++){
-    k = 0;
-    if(s[i-1] == s[i]){
-      s[i] = tobeput[0];
-      while(s[i+1] == s[i] || s[i-1] == s[i]){
-        s[i] = tobeput[k+1]; k++;
-      }
-    }
+
+  int n, ne; cin >> n >> ne;
+  undigraph<int> g(n);
+
+  for(int i = 0; i < ne ; i++){
+    int from, to, cost;
+    cin >> from >> to >> cost;
+    g.add(from, to, cost);
   }
   
-  k = 0;
-  if(s[n-2] == s[n-1]){
-    s[n-1] = tobeput[0];
-    while(s[n-1] == s[n-2]){
-      s[n-1] = tobeput[k+1]; k++;
-    }
-  }
-  cout<<s;
+  vector<int> ans;
+  int t = 0;
+  ans = find_mst<int>(g,t);
+  for(int x: ans) cout<<x<<" ";
   return 0;
 }

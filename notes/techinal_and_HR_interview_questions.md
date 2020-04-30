@@ -41,8 +41,57 @@ Nothing is in the order 😉
 15. **What is the difference between c and c++**
 
 16. **List and Explain some OOPs Concept and explain their requirement and importance**
-    *   **What is inheritance**
     *   **What is class**
+    *   **What is inheritance**
+        Inheritence is a property of class by which it can inherit some property from the other class called its parent class.
+        * Sub Class
+        * Super Class
+        ```c
+        class Parent{
+            public:
+                // functions
+        }
+        class Child : <access mode> Parent{
+            public:
+                // functions
+        }
+        ```
+        * Access mode
+        **private**, **public**, **protected**(default is private)
+        ```c
+        class A{ 
+            public: 
+                int x; 
+            protected: 
+                int y; 
+            private: 
+                int z; 
+        }; 
+            
+        class B : public A { 
+            // x is public 
+            // y is protected 
+            // z is not accessible from B 
+        }; 
+        
+        class C : protected A { 
+            // x is protected 
+            // y is protected 
+            // z is not accessible from C 
+        }; 
+        
+        class D : private A { 
+            // x is private 
+            // y is private 
+            // z is not accessible from D 
+        };  
+        ```
+        * **Types of Inheritence**
+            * Single Inheritence
+            * Multiple Inheritence
+            * Multilevel Inhertitence
+            * Hierarchical Inheritence
+            * Hybrid (Virtual) Inheritence
     *   **What is object**
     *   **What is Abstraction**
     *   **What is Encapsulation**
@@ -62,6 +111,11 @@ Nothing is in the order 😉
 20. **What are Smart Pointers**
 
 21. **What are constructors and destructors**
+    Constructor in cpp is a special member function of the class having same name as class and no return type, which will be called every time when the object is create.
+    * More than one constructor in a class is called a ***constructor overloading***.
+    * **Copy Constructor:** A copy constructor is a member function which initializes an object using another object of the same class.
+        * **Shallow Copy vs Deep Copy**
+        Default cpp constructor do shallow copy(memory location pointer refrence changing one will effect other), if you want to perform deep copy(Complete memory copy) implement your own copy constructor.
 
 22. **What are namespaces and their use**
 
@@ -134,7 +188,7 @@ Nothing is in the order 😉
 
         </center>
 
-        * Any location on the disk can be accesside using track Number --> Sector Number --> Block Number.
+        * Any location on the disk can be accesside using track Number $\rightarrow$ Sector Number $\rightarrow$ Block Number.
         * Offset is also required in addition to the above numbers to get exact data.
     * **Usefulness of indexing and multi-indexing**
         <center>

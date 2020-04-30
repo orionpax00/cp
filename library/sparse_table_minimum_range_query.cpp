@@ -49,11 +49,11 @@ int main(){
   log[1] = 0;
   for (int i = 2; i <= MAXN; i++)
       log[i] = log[i/2] + 1; // not even calculating log
+
   vector<vector<int>> st = sparseTable(input);
   int t;cin>>t;
   while(t--){
-    int L, R; cin>>L>>R;
-
+    int L, R; cin >> L >> R;
     int j = log[R - L + 1];
     int minimum = min(st[L][j], st[R - (1 << j) + 1][j]);
     cout<<minimum<<"\n";
