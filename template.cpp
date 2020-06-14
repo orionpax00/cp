@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-define all(x) (x).begin(),(x).end()
-typedef long long ll;
-const ll mod=1000000007;
 
 int main()
 {
