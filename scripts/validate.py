@@ -3,10 +3,10 @@ import os
 output = []
 answer = []
 
-with open('../output.txt', 'r') as inputfile:
+with open('../letsolve/output.txt', 'r') as inputfile:
   output = [x.split("\n")[0] for x in inputfile.readlines()]
 
-with open('../answer.txt', 'r') as inputfile:
+with open('../letsolve/answer.txt', 'r') as inputfile:
   answer = [x.split("\n")[0] for x in inputfile.readlines()]
 
 fail=0

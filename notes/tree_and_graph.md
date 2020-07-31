@@ -1,3 +1,16 @@
+---
+title: "Habits"
+author: John Doe
+
+html:
+  offline: false
+  path: t.html
+
+export_on_save:
+  html: true
+
+print_background: true
+---
 
 # Graph and Tree Algorithms
 
@@ -10,7 +23,8 @@ Graph algorithms with potiential implementation overview and Application.[[link]
   * Coloring method
   * Low Link method(bridge detection)
 * Topological Sort
-* Eulerian Path
+* Tree Flattening 
+  * Eulerian Path
 * DSU
 * Heavy-Light Decomposition
 * Binary lifting(similiar to sparse table)
@@ -64,3 +78,10 @@ Graph algorithms with potiential implementation overview and Application.[[link]
 * Tree for which the no. of comparisions are minimum is Balanced binary Search Tree.
 * But when the frequencies of keys are given then the balanced binary search tree will not be an optimal search tree.
 * So basically optimal binary search tree is more a problem then the concept, that is solved using dynamic programming.
+
+
+## Flattening of Tree (Eulerian Path) and Heavy Light Decomposition
+
+PROBLEM: https://www.codechef.com/JULY20B/problems/DRGNDEN
+
+* So this question is about point updates and path sum queries which can be handled by flattening the tree, rudimentary heavy-light decomposition, etc

@@ -12,21 +12,19 @@ int main()
 
 	while(t--){
 		long long ts;
-		int ans=0;
+		long long ans=0;
 		cin>>ts;
 	
 		if(ts&1){
 			ans = ts/2; 		
 		}else{
-			long long tjs = (ts - 2)/2;
-			long long divideby = 1; 
+			long long tans = ts/2-1;
 			while(ts%2 == 0){
-				divideby++;
-				ts /= 2;	
+				ts /= 2;
+				tans /= 2;
 			}
-			ans = tjs/divideby;
+			ans = tans;
 		}
-
 		cout<<ans<<"\n";
 
 	}   
