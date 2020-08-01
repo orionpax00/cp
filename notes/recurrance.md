@@ -11,8 +11,12 @@ export_on_save:
 print_background: true
 ---
 
+## Recursion
 
-## Recurrence Relation and Recursion
+* Decision Space
+* Recusive Tree
+
+### Recurrence Relation
 
 * Time Complexity of recursive function is equal to the number of calls to the function multiplied by total cost in one functional call.
 * To compute the time complexity formulate a reccurence relation and solve it for $T(N) = f(N)$, where; $f(N)$ is a some function of N that doesn't depent on $T$. \
