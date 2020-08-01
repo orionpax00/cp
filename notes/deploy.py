@@ -1,6 +1,6 @@
 import os
 
-CLOUD = os.getenviron("CLOUD")
+CLOUD = os.environ["CLOUD"]
 
 with open('./index.md', 'w') as IndexF:
     IndexF.write("## CP\n")
@@ -8,7 +8,7 @@ with open('./index.md', 'w') as IndexF:
         if filename[-4:] == "html" :
             IndexF.write("* [{}](./{})\n".format(filename.replace("_", " ")[:-5].title(), filename))
 
-if LOCAL:
+if CLOUD:
     for filename in os.listdir("."):
         if filename[-2:] == "md":
             os.system("rm .")
