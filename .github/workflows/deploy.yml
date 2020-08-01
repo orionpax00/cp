@@ -14,7 +14,6 @@ jobs:
       - name: Install and Build 🔧
         run: |
           cd notes
-          export CLOUD=1
           python deploy.py
         
       - name: Deploy 🚀
@@ -22,4 +21,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: notes
+          FOLDER: notes/_build
