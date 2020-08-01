@@ -1,3 +1,17 @@
+---
+title: "ST"
+author: Durgesh
+
+html:
+  offline: false
+
+export_on_save:
+  html: true
+
+print_background: true
+---
+
+
 ## Tree Data Structures 
 ### Square Root Decompostion
 

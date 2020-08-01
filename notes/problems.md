@@ -1,3 +1,17 @@
+---
+title: "problems"
+author: Durgesh
+
+html:
+  offline: false
+
+export_on_save:
+  html: true
+
+print_background: true
+---
+
+
 ### Some Problems 
 
 * Best time to buy and sell stocks [link](https://medium.com/algorithms-and-leetcode/best-time-to-buy-sell-stocks-on-leetcode-the-ultimate-guide-ce420259b323)

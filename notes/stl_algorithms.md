@@ -1,3 +1,17 @@
+---
+title: "STL"
+author: Durgesh
+
+html:
+  offline: false
+
+export_on_save:
+  html: true
+
+print_background: true
+---
+
+
 # Top Use Case Stl Algorithms
 Link of video discription: [105 STL Algorithms in less Than an Hour]()
 

@@ -1,3 +1,17 @@
+---
+title: "Recursion"
+author: Durgesh
+
+html:
+  offline: false
+
+export_on_save:
+  html: true
+
+print_background: true
+---
+
+
 ## Recurrence Relation and Recursion
 
 * Time Complexity of recursive function is equal to the number of calls to the function multiplied by total cost in one functional call.
