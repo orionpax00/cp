@@ -82,6 +82,4 @@ Graph algorithms with potiential implementation overview and Application.[[link]
 
 ## Flattening of Tree (Eulerian Path) and Heavy Light Decomposition
 
-PROBLEM: https://www.codechef.com/JULY20B/problems/DRGNDEN
-
-* So this question is about point updates and path sum queries which can be handled by flattening the tree, rudimentary heavy-light decomposition, etc
+* So questions about point updates and path sum queries can be handled by flattening the tree, rudimentary heavy-light decomposition, etc
