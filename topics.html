@@ -30,10 +30,68 @@
 <li>Reducing Space complexity of Dynamic Programming solution.</li>
 <li>Amortization</li>
 </ul>
+<h3 class="mume-header" id="answer-sum-queries">Answer sum queries</h3>
 
+<p>Given an array A=[a1, a2, a3, ..., an] for Q = [{l1,r1}, {l3,r2}, {l3, r3}, ...]</p>
+<ul>
+<li>Prefix array</li>
+<li>sparse table</li>
+<li>sqrt decomposition</li>
+<li>segment tree</li>
+</ul>
+<h4 class="mume-header" id="prefix-array">Prefix Array</h4>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">prefixArray</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> v<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">prefixArray</span><span class="token punctuation">(</span><span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>vi<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> vi<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        v<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> v<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> vi<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">query</span><span class="token punctuation">(</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> p<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> v<span class="token punctuation">[</span>p<span class="token punctuation">.</span>second<span class="token punctuation">]</span> <span class="token operator">-</span> v<span class="token punctuation">[</span>p<span class="token punctuation">.</span>first <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// query has 1 based indexing</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre><h4 class="mume-header" id="sparse-table">Sparse Table</h4>
+
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">typename</span> T<span class="token operator">&gt;</span>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span>T<span class="token operator">&gt;&gt;</span> <span class="token function">sparseTable</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> vec<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  
+  <span class="token keyword">int</span> MAXN <span class="token operator">=</span> vec<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> K <span class="token operator">=</span> <span class="token function">log</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span>T<span class="token operator">&gt;&gt;</span> <span class="token function">st</span><span class="token punctuation">(</span>MAXN<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>K<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// st[i][j] = ans_for_range(i,i+2^j-1) // ans is like min, max, sum etc</span>
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>MAXN<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    st<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> vec<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// j = 0</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// j --&gt; {0, K}</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> j<span class="token operator">&lt;=</span>K<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> i<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> MAXN<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      st<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>st<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> st<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> st<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
       </div>
       <div class="md-sidebar-toc"><ul>
-<li><a href="#topics">Topics</a></li>
+<li><a href="#topics">Topics</a>
+<ul>
+<li><a href="#answer-sum-queries">Answer sum queries</a>
+<ul>
+<li><a href="#prefix-array">Prefix Array</a></li>
+<li><a href="#sparse-table">Sparse Table</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
       <a id="sidebar-toc-btn">&#x2261;</a>
