@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+#define int long long
+
 template <typename T>
 class dfs_digraph : public digraph<T> {
   public:
@@ -115,3 +118,77 @@ class dfs_digraph : public digraph<T> {
     return roots;
   }
 };
+using namespace std;
+long long bem(long long a, long long b, long long m){
+  long long res=1;
+  while(b>0){
+    if(b&1) res = res * a % m;
+    a = a * a % m;
+    b >>= 1;
+  }
+  return res;
+}
+
+template<typename A>
+string tostring(A v) {
+  bool first = true;
+  string res = "{";
+  for (const auto &x : v) {
+    if (!first) {
+      res += ", ";
+    }
+    first = false;
+    res += to_string(x);
+  }
+  res += "}";
+  return res;
+}
+
+void debug_out() { cerr << endl; }
+
+template<typename Head, typename... Tail >
+void debug_out(Head H, Tail... T) {
+	cerr << " " << tostring(H);
+	debug_out(T...);
+}
+
+#ifdef LOCAL
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#else
+#define debug(...) 42
+#endif
+int32_t main()
+{
+	ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+	int t; cin >> t;
+	while(t--){
+		string s,p;
+		cin >> s >> p;
+		vector<int> v(26);
+		for(char c : s) v[c - 'a']++;
+		for(char c : p) v[c - 'a']--;
+		char occ_2 = '~';
+		if(p.length() > 1){
+  	  char prev = p[0]; int i = 1;
+  	  while(p[i]==prev) i++;
+  	  occ_2 = p[i];
+		}
+		string ans = "";
+		bool done = false;
+		for(int i = 0 ; i < 26; i++){
+			if('a' + i == p[0] && p.length() > 1 && occ_2 < p[0]){ 
+				ans+=p; done=true;	
+			}
+      int t = v[i];
+			while(t--) ans += 'a' + i;
+			if('a' + i == p[0] && !done) ans += p;
+		}
+		cout << ans << "\n";
+	}
+
+  return 0;
+}
+

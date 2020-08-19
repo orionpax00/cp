@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.json": "json",
         "iostream": "cpp",
         "algorithm": "cpp",
         "array": "cpp",
@@ -41,7 +42,11 @@
         "valarray": "cpp",
         "bitset": "cpp",
         "functional": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "set": "cpp",
+        "atomic": "cpp",
+        "complex": "cpp",
+        "iterator": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
