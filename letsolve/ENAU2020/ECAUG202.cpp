@@ -8,7 +8,17 @@ int32_t main(){
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-    
+ 	int tt; cin >> tt;
+	while(tt--){
+		int n ; cin >> n;
+		int ans = 0;
+		while(n--){
+			int t; cin >> t;
+			if( (t&1) == 0) ans += t;
+		}
+
+		cout << ans << "\n";
+	}
 
 
 	#ifdef LOCAL

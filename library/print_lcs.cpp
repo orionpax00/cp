@@ -1,5 +1,5 @@
 template<typename T>
-vector<...> print_lcs(vector<vector<int>>& dp, T a, T b){
+vector<...> print_lcs(vector<vector<int>>& dp, T& a, T& b){
   vector<...> ans; // define typename char. int, double etc.
   int i = dp.size();
   int j = dp[0].size();

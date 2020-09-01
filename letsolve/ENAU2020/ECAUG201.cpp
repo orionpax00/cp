@@ -8,8 +8,12 @@ int32_t main(){
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-    
+	int tt; cin >> tt;
+	while(tt--){
+		int n, m; cin >> n >> m;
 
+		cout << (n * m ) / __gcd(n ,m) ;
+	}
 
 	#ifdef LOCAL
 	cerr << "\n";

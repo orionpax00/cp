@@ -9,10 +9,13 @@ class exp_graph : public digraph<T>{
   vector<T> d; //1e9
   vector<int> p;
   vector<int> neg_cycle;
+  vector<int> mst_edges;
+  vector<int> cutpoints(n, false);
+  vector<bool> bridges(edges.size(), false);
   int INF = 1000000000;
   bool isnegative_cycle = false;
 
-  exp_graph(int _n) : digraph<T>(_n) {}
+  exp_graph(int _n) : dfs_undigraph<T>(_n) {}
 
   void dijkstra(int u){
     d.assign(n, INF); //1e9
@@ -84,30 +87,56 @@ class exp_graph : public digraph<T>{
     return path;
   }
 
-  vector<int> toposort(){
-    vector<int> deg(n, 0);
-    for (int id = 0; id < (int) edges.size(); id++) deg[edges[id].to]++;
+  void find_bridges(){
+    dfs_all();
+    for(int i = 0 ; i < n; i++){
+      if(pv[i] != -1 && min_depth[i] == depth[i]) bridge[pe[i]] = true;
+    }  
+  }
 
-    vector<int> x;
-    for (int i = 0; i < n; i++) 
-      if (deg[i] == 0) 
-        x.push_back(i);
-      
-    for (int ptr = 0; ptr < (int) x.size(); ptr++) {
-      int i = x[ptr];
-      for (int id : g[i]) {
-        auto &e = edges[id];
-        int to = e.to;
-        if (--deg[to] == 0) 
-          x.push_back(to);
+  void find_cutpoints(){
+    dfs_all();
+    for(int i = 0 ; i < n; i++){
+      if(pv[i] != -1 && min_depth[i] >= depth[pv[i]]) cutpoints[pv[i]] = true;
+    }
+
+    vector<int> children(n, 0);
+    for(int i =0; i < n; i++){
+      if(pv[i] != -1){
+        children[pv[i]]++;
       }
     }
 
-    if ((int) x.size() != g.n) 
-      return vector<int>();
-    
-    return x;
+    for(int i =0; i < n; i++){
+      if(pv[i] == -1 && children[i] < 2){
+        cutpoints[i] = false;
+      }
+    }
   }
-  
+   
 
+  void find_mst(){
+    vector<int> _order(edges.size());
+    iota(_order.begin(), _order.end(), 0);
+    sort(_order.begin(), _order.end(), [&](int a, int b){
+      return edges[a].cost < edges[b].cost;
+    });
+
+    dsu d(n);
+    for(int id : _order){
+      auto &e = edges[id];
+      if(d.find(e.from) != d.find(e.to)){
+        d.unite(e.from, e.to);
+        mst_edges.push_back(id);
+      }
+    }
+  }
 };
+
+
+
+
+
+
+
+

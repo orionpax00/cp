@@ -3,16 +3,14 @@
 
 using namespace std;
 
-int32_t main(){
+int32_t main()
+{
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
+	int d, t, s; cin >> d >> t >> s;
+	if(s*t >= d) cout << "Yes\n";
+	else cout << "No\n";	
 
-    
-
-
-	#ifdef LOCAL
-	cerr << "\n";
-	#endif
-	return 0;
+  return 0;
 }

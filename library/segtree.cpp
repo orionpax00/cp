@@ -11,12 +11,13 @@ class segtree {
 	node unite(const node &a, const node &b) const{
 		node res;
 		... // apply node merging logic like in sum parent = left child + right child
-		return node;
+		return res;
 	}
 
 	inline void pull(int x, int z){
 		tree[x] = unite(tree[x+1], tree[z]);
 	}
+	
 	inline void push(int x, int l, int r){ //this function is useful in lazy propogation as node is a struct so no need to store another tree just use another variable in the node struct
 		int y = (l+r) >> 1;
 		int z = x + ((y - l + 1) << 1);
@@ -94,6 +95,14 @@ class segtree {
 		assert(n > 0);
 		tree.resize(2*n -1);
 		build(0, 0, n-1);
+	}
+
+	template <typename M>
+	segtree(const vector<M> &v) {
+		n = v.size();
+		assert(n > 0);
+		tree.resize(2 * n - 1);
+		build(0, 0, n - 1, v);
 	}
 	
 	node get(int ll, int rr){
