@@ -1,5 +1,6 @@
 * [Dp](./dp.html)
 * [Recurrance](./recurrance.html)
+* [Range Queries](./range_queries.html)
 * [Topics](./topics.html)
 * [Segment Tree](./segment_tree.html)
 * [Problems](./problems.html)
