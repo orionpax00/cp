@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>dp</title>
+      <title>CPP</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -22,52 +22,119 @@
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
-      <h3 class="mume-header" id="paradigm-of-dp">Paradigm of DP</h3>
-
-<ul>
-<li>Overlapping subproblems</li>
-<li>Optimal Substructure</li>
+      <ul>
+<li>Static data memeber doesn&apos;t contribute to size of object.</li>
 </ul>
-<h3 class="mume-header" id="trick">Trick</h3>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<ul>
-<li>Bitmasking and Dynamic Programming</li>
-</ul>
-<h3 class="mume-header" id="assembly-line-scheduling">Assembly Line Scheduling</h3>
-
-<h3 class="mume-header" id="edit-distance">Edit Distance</h3>
-
-<p>[Hard dp]</p>
-<p>Different types of edit distance</p>
-<ul>
+Test t<span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+output<span class="token operator">:</span> <span class="token number">4</span> <span class="token comment">//size of integer j</span>
+</pre><ul>
 <li>
-<p>Lavenshtein distance [d, i, r]</p>
+<p>Both static and Non static functions does not contribute of size</p>
 </li>
 <li>
-<p>LCS [d, i]</p>
-</li>
-<li>
-<p>hamming distance [r]</p>
-</li>
-<li>
-<p>Damerau-levennshtein distance [d, i, r, t] (t: for transporation of two adjacent characters)</p>
-</li>
-<li>
-<p>Jaro Distance [t]</p>
-</li>
-<li>
-<p>replace, delete, insert</p>
+<p>In Multiple inheritence constructors are called in derivation order from left to right while destructors are called in reverse order.</p>
 </li>
 </ul>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">B1</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">B1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span><span class="token string">&quot;B1\n&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
+<span class="token keyword">class</span> <span class="token class-name">B2</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">B2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span><span class="token string">&quot;B2\n&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">D</span><span class="token operator">:</span> <span class="token keyword">public</span> B1<span class="token punctuation">,</span> <span class="token keyword">public</span> B2<span class="token punctuation">{</span> <span class="token comment">//Multiple Inheritance</span>
+    <span class="token function">D</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span><span class="token string">&quot;D\n&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+output<span class="token operator">:</span> 
+B1
+B2
+D
+</pre><ul>
+<li>Conversion constructor and Conversion Operator</li>
+</ul>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">A</span><span class="token punctuation">(</span><span class="token keyword">int</span> _n<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">// can be extended to multiple argument</span>
+        n <span class="token operator">=</span> _n<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> n <span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+A <span class="token function">a</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+a <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>  <span class="token comment">// same can be extended to multiple argument as {a,b,c,d,...}</span>
+a<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre><ul>
+<li>virtual inheritence : save memory by not causing unnessary copies of base class.</li>
+</ul>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Base</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">D</span> <span class="token operator">:</span> <span class="token keyword">virtual</span> <span class="token keyword">public</span> Base <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</pre><ul>
+<li>If there are multiple levels of inheritence then the function is searched lineary from bottom to top until the matching function is found.</li>
+</ul>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;A&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;B&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">D</span><span class="token operator">:</span> <span class="token keyword">public</span> A<span class="token punctuation">,</span> <span class="token keyword">public</span> B<span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+D d<span class="token punctuation">;</span>
+d<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+output<span class="token operator">:</span> B
+</pre><ul>
+<li>Scope Resolution Operator</li>
+</ul>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token operator">::</span>x<span class="token punctuation">;</span> <span class="token comment">// global scope</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+output<span class="token operator">:</span> <span class="token number">10</span>
+</pre>
       </div>
-      <div class="md-sidebar-toc"><ul>
-<li><a href="#paradigm-of-dp">Paradigm of DP</a></li>
-<li><a href="#trick">Trick</a></li>
-<li><a href="#assembly-line-scheduling">Assembly Line Scheduling</a></li>
-<li><a href="#edit-distance">Edit Distance</a></li>
-</ul>
-</div>
+      <div class="md-sidebar-toc"></div>
       <a id="sidebar-toc-btn">&#x2261;</a>
     
     
