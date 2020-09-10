@@ -32,6 +32,15 @@ Nothing is in the order 😉
     > A piece of code is given determine it time and space complexity.
 
 5.  **ACID property of DBMS**
+    1. Atomicity
+        An Atomic transaction is an indivisible and irreducible series of database operations such that either all occur, or nothing occurs. A guarantee of atomicity prevents update of the database ocurring only partially, which can cause greater problems than rejecting the whole series outright. 
+    2. Consistency
+        Consistency refers to the requirement that any given database transcation must change affected data only in allowed ways. (for example it is a rule that gender column of table will only have values like male, female or unknown, trasaction will not be permitted if it has gender value other the specified)
+    3. Isolation
+        Isolation determine how transaction integrity is visible to other users and system. Isolation is typically defined at database level as a property that defines how/when the changes made by one operation become visible to others.
+    4. Durablity
+        Durability is a ACID property which insures that the transcations that have committed will survive permanently.
+    
 
 6.  **SQL Queries mainly join and nested**
 
@@ -216,3 +225,13 @@ Nothing is in the order 😉
 51. **Continuous Integration(CI) in CPP**
     CI is automatic building of project and running of the test cases in either on your local machine or any cloud machine so that every time code repository gets new commit it re-run that whole pipeline imediately.
     Using ***Jenkins***: Create Jenkinsfile, Write command to build project, Run test cases and setup Jenkins server.
+
+52. **Mutex vs Semaphore**
+    * Mutex is a locking mechanism used to syncronize access to a resource
+    * Semaphore is a signaling mechanism like a I am done you can carry on 
+    * Can a mutex be locked more than once?
+    Yes a recursive mutex can be locked more than once. in which a count is associated with it, yet retains only one state (locked/unlocked)
+    * What happens if a non-recursive mutex is locked more than once.
+    Deadlock: if a thread which already locked a mutex, tries to lock that mutex again, it will enter into waiting list of that mutex, which results in deadlock.
+    * binary semaphore vs mutex.
+    binary semaphore has only two states (0 and 1) which is equivalent to locked and unlocked in mutex.

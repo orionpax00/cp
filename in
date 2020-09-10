@@ -1,0 +1,28 @@
+
+xwininfo: Please select the window about which you
+          would like information by clicking the
+          mouse in that window.
+
+xwininfo: Window id: 0xc00005 "freedesktop - How to identify the notification daemon? - Unix & Linux Stack Exchange - Brave"
+
+  Absolute upper-left X:  1376
+  Absolute upper-left Y:  46
+  Relative upper-left X:  1376
+  Relative upper-left Y:  46
+  Width: 1342
+  Height: 706
+  Depth: 24
+  Visual: 0x21
+  Visual Class: TrueColor
+  Border width: 2
+  Class: InputOutput
+  Colormap: 0x20 (installed)
+  Bit Gravity State: NorthWestGravity
+  Window Gravity State: NorthWestGravity
+  Backing Store State: NotUseful
+  Save Under State: no
+  Map State: IsViewable
+  Override Redirect State: no
+  Corners:  +1376+46  -10+46  -10-12  +1376-12
+  -geometry 1342x706-10-12
+

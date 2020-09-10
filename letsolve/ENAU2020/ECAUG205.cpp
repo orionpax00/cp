@@ -3,6 +3,34 @@
 
 using namespace std;
 
+
+vector<int> v;
+int n;
+int max_ = INT_MIN;
+int k;
+
+bool distributable(int m){
+	int count = 0;
+	for(int i = 0; i < n; i++) count += v[i]/m;
+	if(count >= k) return true;
+	return false;
+}
+
+int solve(){
+	int low = 1, high = max_;
+	int res;
+	while(low <= high){
+		int mid = (high+low)/2;
+		if(distributable(mid)){
+			res = mid; low = mid + 1;
+		}else{
+			high = mid - 1;
+		}
+	}
+	return res;
+}
+
+
 int32_t main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
@@ -10,30 +38,17 @@ int32_t main(){
 
 	int tt; cin >> tt;
 	while(tt--){
-		int n,k; cin >> n >> k;
-		vector<int> v(n);
-		int min_ = INT_MAX;
+		cin >> n >> k;
+		v.resize(n);
+		
 		for(int i = 0 ; i < n; i++){
 			int t; cin >> t;
 			v[i] = t;
-			min_ = min(min_, t);
+			max_ = max(max_, t);
 		}
+		
+		cout << solve() << "\n";
 
-		bool ok = false;
-
-		while(min_ > 0){
-			int k_ = 0;
-			for(int i = 0 ; i < n; i++){
-				k_ += v[i]/min_;
-			}
-			if(k_ >= k) {
-				cout << min_ << "\n";
-				ok = true;break;
-			}
-			min_--;
-		}
-
-		if(!ok) cout << -1 << "\n";
 	}
 
 	#ifdef LOCAL
