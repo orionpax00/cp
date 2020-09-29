@@ -1,5 +1,5 @@
 template<typename T>
-class exp_graph : public digraph<T>{
+class exp_graph : public dfs_undigraph<T>{
   public:
   using graph<T>::edges;
   using graph<T>::g;

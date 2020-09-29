@@ -235,3 +235,11 @@ Nothing is in the order 😉
     Deadlock: if a thread which already locked a mutex, tries to lock that mutex again, it will enter into waiting list of that mutex, which results in deadlock.
     * binary semaphore vs mutex.
     binary semaphore has only two states (0 and 1) which is equivalent to locked and unlocked in mutex.
+
+53. **Difference Between physical and logical independence in dbms**
+		Three tier achirtecture 
+		* view schema
+		* conceptual schema
+		* physhical schema
+		
+

@@ -1,0 +1,99 @@
+#include "bits/stdc++.h"
+
+using namespace std;
+
+
+class Trie{
+public:
+	struct Node {
+		Node* children[26];
+		bool isEnd; 
+	};
+
+	Node* root;
+
+	Node* getNode(){
+		Node* pNode = new Node;
+		pNode->isEnd = false;
+		for(int i = 0 ; i < 26; i++) pNode->children[i] == NULL;
+		return pNode;
+	}
+
+	Trie(){
+		root=getNode();
+	}
+
+	void insert(string s){
+		Node* pC = root;
+		int n = s.length();
+		for(int i = 0; i < n; i++){
+			int idx = s[i] - 'a';
+			if(!pC->children[idx]) pC->children[idx] = getNode();
+			pC = pC->children[idx];
+		}
+
+		pC->isEnd = true;
+	}
+
+	bool isEmpty(Node* root){
+		for(int i =0; i < 26; i++){
+			if(root->children[i]) return false;
+		}
+		return true;
+	}
+
+	vector<string> prefSearch;
+	void prefSearchRec(Node* root, string q){
+		if(root->isEnd) prefSearch.push_back(q);
+
+		if(isEmpty(root)) return;
+
+		for(int i = 0; i < 26; i++){
+			if(root->children[i]){
+				q.push_back(97+i);
+				cout << q << endl;
+				prefSearchRec(root->children[i], q);
+				q.pop_back();
+				
+			}
+		}
+	}
+
+	int prefixSearch(string s){
+		Node* pC = root;
+		int n = s.length();
+		for(int i = 0; i < n; i++){
+			int idx = s[i] - 'a';
+			if(!pC->children[idx]) return 0;
+			pC = pC->children[idx];
+		}
+
+		bool isWord = (pC->isEnd == true);
+		bool isLast = isEmpty(pC);
+		cout << "prefix Searc"<<endl;
+		if(isWord && isLast) return -1;
+		if(!isLast){
+			prefSearchRec(pC, s);
+			return 1;
+		}
+		assert(false);
+	}
+};
+
+
+int main(){
+
+	int tt; cin >> tt;
+	while(tt--){
+		Trie t;
+		int n; cin >> n;
+		for(int i =0; i < n; i++){
+			string s; cin >> s;
+			t.insert(s);
+		}
+		cout  << "inserted successfully" << endl;
+		string s; cin >> s;
+		n = [?2004h[?1049h[?1h=[?2004h[?12h[?12l[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;130m1   [m
+[94m~                                                                                                                        [3;1H~                                                                                                                        [4;1H~                                                                                                                        [5;1H~                                                                                                                        [6;1H~                                                                                                                        [7;1H~                                                                                                                        [8;1H~                                                                                                                        [9;1H~                                                                                                                        [10;1H~                                                                                                                        [11;1H~                                                                                                                        [m[12;2H[No Name][102C0/1  000[1;5H[?25h[13;1H[?2004l[?1l>[?1049lVim: Caught deadly signal HUP
+Vim: Finished.
+[13;1H[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t

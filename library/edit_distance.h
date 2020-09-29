@@ -8,7 +8,7 @@ void edit_dis(vector<vector<int>>& dp, string& a, string& b){
 			if(i == 0) dp[i][j] = j;
 			else if(j == 0) dp[i][j] = i;
 			else if(a[i-1] == b[i-1]) dp[i][j] = dp[i-1][j-1];
-			else dp[i][j] = 1 + min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1]);
+			else dp[i][j] = 1 + min({dp[i][j-1], dp[i-1][j], dp[i-1][j-1]});
 		}
 	}
 
