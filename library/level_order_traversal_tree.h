@@ -1,4 +1,4 @@
-vector<int> leftView(Node *root){
+vector<int> levelOrder(Node *root){
    vector<int> ans;
    queue<Node*> q;
    q.push(root); q.push(NULL);
@@ -20,4 +20,4 @@ vector<int> leftView(Node *root){
        q.pop();
    }
    return ans;
-}
+};

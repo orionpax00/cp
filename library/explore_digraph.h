@@ -1,10 +1,10 @@
 template<typename T>
-class exp_graph : public digraph<T>{
+class explore_digraph : public dfs_digraph<T>{
   public:
-  using graph<T>::edges;
-  using graph<T>::g;
-  using graph<T>::n;
-  using graph<T>::ignore;
+  using dfs_digraph<T>::edges;
+  using dfs_digraph<T>::g;
+  using dfs_digraph<T>::n;
+  using dfs_digraph<T>::ignore;
 
   vector<T> d; //1e9
   vector<int> p;
@@ -12,7 +12,7 @@ class exp_graph : public digraph<T>{
   int INF = 1000000000;
   bool isnegative_cycle = false;
 
-  exp_graph(int _n) : digraph<T>(_n) {}
+  explore_digraph(int _n) : dfs_digraph<T>(_n) {}
 
   void dijkstra(int u){
     d.assign(n, INF); //1e9
@@ -52,7 +52,7 @@ class exp_graph : public digraph<T>{
       for(int j = 0; j < (int)edges.size(); j++){
         auto &e = edges[j];
         if(d[e.from] < INF){
-          int to = e.from ^ e.to ^ i;
+          int to = e.to;
           if(d[to] > d[e.from] + e.cost){
             d[to] = max(-INF, d[e.from] + e.cost);
             p[to] = e.from;
@@ -83,7 +83,6 @@ class exp_graph : public digraph<T>{
     reverse(path.begin(), path.end());
     return path;
   }
-
   vector<int> toposort(){
     vector<int> deg(n, 0);
     for (int id = 0; id < (int) edges.size(); id++) deg[edges[id].to]++;
@@ -95,15 +94,20 @@ class exp_graph : public digraph<T>{
       
     for (int ptr = 0; ptr < (int) x.size(); ptr++) {
       int i = x[ptr];
+      //vector<int> temp; to_get lexo order
       for (int id : g[i]) {
         auto &e = edges[id];
         int to = e.to;
-        if (--deg[to] == 0) 
+        if (--deg[to] == 0){ 
+          //temp.push_back(to);
           x.push_back(to);
+		}
       }
+      //sort(temp.begin(), temp.end());
+      //for(int y : temp) x.push_back(y); 
     }
 
-    if ((int) x.size() != g.n) 
+    if ((int) x.size() != n) 
       return vector<int>();
     
     return x;

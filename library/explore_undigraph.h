@@ -1,17 +1,21 @@
 template<typename T>
 class exp_graph : public dfs_undigraph<T>{
   public:
-  using graph<T>::edges;
-  using graph<T>::g;
-  using graph<T>::n;
-  using graph<T>::ignore;
+  using dfs_undigraph<T>::edges;
+  using dfs_undigraph<T>::g;
+  using dfs_undigraph<T>::n;
+using dfs_undigraph<T>::pv;
+using dfs_undigraph<T>::pe;
+using dfs_undigraph<T>::depth;
+using dfs_undigraph<T>::min_depth;
+  using dfs_undigraph<T>::ignore;
 
   vector<T> d; //1e9
   vector<int> p;
   vector<int> neg_cycle;
   vector<int> mst_edges;
-  vector<int> cutpoints(n, false);
-  vector<bool> bridges(edges.size(), false);
+  vector<int> cutpoints;
+  vector<bool> bridges;
   int INF = 1000000000;
   bool isnegative_cycle = false;
 
@@ -43,6 +47,7 @@ class exp_graph : public dfs_undigraph<T>{
     }
   }
 
+// this implementation is not ok
   void bellman_ford(int u){
     //init
     d.assign(n, INF); //1e9
@@ -55,7 +60,7 @@ class exp_graph : public dfs_undigraph<T>{
       for(int j = 0; j < (int)edges.size(); j++){
         auto &e = edges[j];
         if(d[e.from] < INF){
-          int to = e.from ^ e.to ^ i;
+          int to = e.to;
           if(d[to] > d[e.from] + e.cost){
             d[to] = max(-INF, d[e.from] + e.cost);
             p[to] = e.from;
@@ -87,15 +92,16 @@ class exp_graph : public dfs_undigraph<T>{
     return path;
   }
 
+  // call it after dfs_all()
   void find_bridges(){
-    dfs_all();
+    bridges.resize(edges.size(), false);
     for(int i = 0 ; i < n; i++){
-      if(pv[i] != -1 && min_depth[i] == depth[i]) bridge[pe[i]] = true;
+      if(pv[i] != -1 && min_depth[i] == depth[i]) bridges[pe[i]] = true;
     }  
   }
-
+	//call it after dfs_all
   void find_cutpoints(){
-    dfs_all();
+    cutpoints.resize(n);
     for(int i = 0 ; i < n; i++){
       if(pv[i] != -1 && min_depth[i] >= depth[pv[i]]) cutpoints[pv[i]] = true;
     }

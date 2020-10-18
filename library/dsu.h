@@ -24,4 +24,4 @@ class dsu {
 			if(rank[a] == rank[b]) rank[a]++;
 		}
 	}
-}
+};

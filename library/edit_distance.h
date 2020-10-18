@@ -15,11 +15,11 @@ void edit_dis(vector<vector<int>>& dp, string& a, string& b){
 	//memory opimized //in that case dp should be dp[2][len of b + 1]
 	/*
 	iota(dp[0].begin(), dp[0].end(), 0);
-	for(int i = 0; i <= n; i++){
+	for(int i = 1; i <= n; i++){
 		int bi = i&1;
 		for(int j = 0; j <= m; j++){
-			if(j == 0) dp[bi] = i;
-			else if(a[i - 1] = b[j - 1]) dp[i][j] = dp[bi ^ 1][j - 1];
+			if(j == 0) dp[bi][j] = i;
+			else if(a[i - 1] = b[j - 1]) dp[bi][j] = dp[bi ^ 1][j - 1];
 			else dp[bi][j] = 1 + min({dp[bi ^ 1][j], dp[bi][j-1], dp[bi ^ 1][j - 1]});
 		}
 	}
